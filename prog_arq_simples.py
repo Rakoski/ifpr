@@ -1,9 +1,9 @@
-def escrever_arq(cam_arq, nome):
-    with open(cam_arq, 'w+') as arquivo:
+def escrever_arq(cam_arq: str, nome: str) -> None:
+    with open(cam_arq, 'a+') as arquivo:
         arquivo.write(nome)
 
 
-def ler_arq(cam_arq):
+def ler_arq(cam_arq: str) -> None:
     print("Mostrando: ")
     print()
     with open(cam_arq, 'r+') as arquivo:
@@ -12,6 +12,6 @@ def ler_arq(cam_arq):
             print(linha[c].replace("\n", ''))
 
 
-escrever_arq("/home/mateus/PycharmProjects/ifpr/sim.txt", "Mateus")
+escrever_arq("/home/mateus/PycharmProjects/ifpr/sim.txt", "\nArtur")
 
 ler_arq("/home/mateus/PycharmProjects/ifpr/sim.txt")
