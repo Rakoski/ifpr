@@ -1,1 +1,5 @@
-Mateus
+Mateus;mateusrakoski@gmail.com;10000;03/12/2003
+Lucas;luquinha@gmail.com;5000;12/08/2005
+neymar jr;neymarjr@gmail.com;10000.0;12/03/2005
+lionel messi;leomessi@gmail.com;10000.0;12/06/2005;
+cristiano ronaldo;cr7@gmail.com;20000.0;09/12/2005;
