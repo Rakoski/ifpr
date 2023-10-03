@@ -1,34 +1,30 @@
 from time import sleep
 
-import prog_arq_simples
+import prog_arq_simples as programa
 
 while True:
-    opcao = prog_arq_simples.mostrar_menu()
+    opcao = programa.mostrar_menu()
 
     if opcao == 1:
-        prog_arq_simples.inserir_dados()
+        programa.inserir_dados()
 
     elif opcao == 2:
-        prog_arq_simples.ler_arq("nome.txt")
+        programa.ler_arq("nome.txt")
 
     elif opcao == 3:
-        nome = str(input("Qual nome quer pesquisar? "))
-        prog_arq_simples.buscar_dados_pelo_nome("nome.txt", nome)
+        programa.buscar_dados_pelo_nome("nome.txt")
 
     elif opcao == 4:
-        print(prog_arq_simples.relatorio_soma_salarios("nome.txt"))
+        print(programa.relatorio_soma_salarios("nome.txt"))
 
     elif opcao == 5:
-        ano_nascimento = int(input("Qual ano quer pesquisar? "))
-        print(prog_arq_simples.relatorio_soma_salarios_por_ano_nascimento("nome.txt", ano_nascimento))
+        print(programa.relatorio_soma_salarios_por_ano_nascimento("nome.txt"))
 
     elif opcao == 6:
-        nome = str(input("Qual nome quer pesquisar? "))
-        print(prog_arq_simples.relatorio_soma_salarios_por_nome("nome.txt", nome))
+        print(programa.relatorio_soma_salarios_por_nome("nome.txt"))
 
     elif opcao == 7:
-        idade = int(input("Qual idade quer pesquisar? "))
-        print(prog_arq_simples.relatorio_soma_salarios_por_idade("nome.txt", idade))
+        print(programa.relatorio_soma_salarios_por_idade('nome.txt'))
 
     else:
         print("finalizando...")

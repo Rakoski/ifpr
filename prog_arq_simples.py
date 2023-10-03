@@ -47,7 +47,8 @@ def inserir_dados() -> None:
     escrever_arq(f"nome.txt", f"{nome_completo};", f"{email};", f"{salario};", f"{data_nascimento};", "\n")
 
 
-def buscar_dados_pelo_nome(cam_arq: str, nome: str) -> None:
+def buscar_dados_pelo_nome(cam_arq: str) -> None:
+    nome = str(input("Digite seu nome: "))
     with open(cam_arq, 'r+') as arquivo:
         linha = arquivo.readlines()
         for c in range(len(linha)):
@@ -67,8 +68,9 @@ def relatorio_soma_salarios(cam_arq):
     return sum(salarios)
 
 
-def relatorio_soma_salarios_por_ano_nascimento(cam_arq: str, ano_nascimento: float):
+def relatorio_soma_salarios_por_ano_nascimento(cam_arq: str):
     salarios = []
+    ano_nascimento = float(input("Digite seu ano de nascimento: "))
     with open(cam_arq, 'r') as arquivo:
         linha = arquivo.readlines()
         for item in range(len(linha)):
@@ -79,8 +81,9 @@ def relatorio_soma_salarios_por_ano_nascimento(cam_arq: str, ano_nascimento: flo
     return sum(salarios)
 
 
-def relatorio_soma_salarios_por_nome(cam_arq: str, nome: str):
+def relatorio_soma_salarios_por_nome(cam_arq: str):
     salarios = []
+    nome = str(input("Digite seu nome: "))
     with open(cam_arq, 'r') as arquivo:
         linha = arquivo.readlines()
         for item in range(len(linha)):
@@ -91,33 +94,57 @@ def relatorio_soma_salarios_por_nome(cam_arq: str, nome: str):
     return sum(salarios)
 
 
-def relatorio_soma_salarios_por_idade(cam_arq: str, idade: int):
+def ler_arquivo(cam_arq):
+    with open(cam_arq, 'r') as arquivo:
+        return arquivo.readlines()
+
+
+def calcular_idade(data_de_nascimento, idade):
+    data_de_nascimento_splitada = data_de_nascimento.split("/")
+    ano_de_nascimento_no_arquivo = int(data_de_nascimento_splitada[2])
+    ano_nascimento = int(year) - idade
+    return ano_de_nascimento_no_arquivo, ano_nascimento
+
+
+def calcular_medias_salarios_por_idade(linhas, idade):
     cont_maior_que_idade = cont_menor_que_idade = 0
     salarios_maior_que_idade = []
     salarios_menor_que_idade = []
 
-    with open(cam_arq, 'r') as arquivo:
-        linha = arquivo.readlines()
+    for linha in linhas:
+        splitado = linha.split(";")
+        data_de_nascimento_do_arquivo = splitado[3]
+        ano_de_nascimento_no_arquivo, ano_nascimento = calcular_idade(data_de_nascimento_do_arquivo, idade)
 
-        for item in range(len(linha)):
-            splitado = linha[item].split(";")
-            data_de_nascimento_do_arquivo = splitado[3]
-            data_de_nascimento_splitada = data_de_nascimento_do_arquivo.split("/")
-            ano_de_nascimento_no_arquivo = data_de_nascimento_splitada[2]
-            ano_nascimento = int(year) - idade
+        if ano_nascimento <= ano_de_nascimento_no_arquivo:
+            cont_menor_que_idade += 1
+            salario_pra_colocar = splitado[2]
+            salarios_menor_que_idade.append(float(salario_pra_colocar))
+        else:
+            cont_maior_que_idade += 1
+            salario_pra_colocar = splitado[2]
+            salarios_maior_que_idade.append(float(salario_pra_colocar))
 
-            # ele quer o maior igual ou o menor igual e falou isso explicitamente na explicação
-            if ano_nascimento <= int(ano_de_nascimento_no_arquivo):
-                cont_menor_que_idade += 1
-                salario_pra_colocar = splitado[2]
-                salarios_menor_que_idade.append(float(salario_pra_colocar))
-
-            elif ano_nascimento >= int(ano_de_nascimento_no_arquivo):
-                cont_maior_que_idade += 1
-                salario_pra_colocar = splitado[2]
-                salarios_maior_que_idade.append(float(salario_pra_colocar))
-
-    media_maior_que_idade = sum(salarios_maior_que_idade)/cont_maior_que_idade
-    media_menor_que_idade = sum(salarios_menor_que_idade)/cont_menor_que_idade
+    if cont_maior_que_idade != 0:
+        media_maior_que_idade = sum(salarios_maior_que_idade) / cont_maior_que_idade
+    else:
+        media_maior_que_idade = 0
+    if cont_menor_que_idade != 0:
+        media_menor_que_idade = sum(salarios_menor_que_idade) / cont_menor_que_idade
+    else:
+        media_menor_que_idade = 0
 
     return media_maior_que_idade, media_menor_que_idade
+
+
+def relatorio_soma_salarios_por_idade(cam_arq: str):
+    try:
+        linhas = ler_arquivo(cam_arq)
+        idade = int(input("Qual sua idade? "))
+        media_maior_que_idade, media_menor_que_idade = calcular_medias_salarios_por_idade(linhas, idade)
+        return media_maior_que_idade, media_menor_que_idade
+    except ZeroDivisionError:
+        print(f"A média menor que a idade deu 0 e a média maior que"
+              f" a idade deu 0 ")
+
+
