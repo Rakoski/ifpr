@@ -4,6 +4,7 @@ currentDateTime = datetime.datetime.now()
 date = currentDateTime.date()
 year = date.strftime("%Y")
 
+
 def escrever_arq(cam_arq: str, *nome) -> None:
     with open(cam_arq, 'a+') as arquivo:
         arquivo.writelines(nome)

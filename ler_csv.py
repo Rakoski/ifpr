@@ -12,19 +12,23 @@ while True:
         prog_arq_simples.ler_arq("nome.txt")
 
     elif opcao == 3:
-        prog_arq_simples.buscar_dados_pelo_nome("nome.txt", "Mateus")
+        nome = str(input("Qual nome quer pesquisar? "))
+        prog_arq_simples.buscar_dados_pelo_nome("nome.txt", nome)
 
     elif opcao == 4:
         print(prog_arq_simples.relatorio_soma_salarios("nome.txt"))
 
     elif opcao == 5:
-        print(prog_arq_simples.relatorio_soma_salarios_por_ano_nascimento("nome.txt", 2005))
+        ano_nascimento = int(input("Qual ano quer pesquisar? "))
+        print(prog_arq_simples.relatorio_soma_salarios_por_ano_nascimento("nome.txt", ano_nascimento))
 
     elif opcao == 6:
-        print(prog_arq_simples.relatorio_soma_salarios_por_nome("nome.txt", "neymar jr"))
+        nome = str(input("Qual nome quer pesquisar? "))
+        print(prog_arq_simples.relatorio_soma_salarios_por_nome("nome.txt", nome))
 
     elif opcao == 7:
-        print(prog_arq_simples.relatorio_soma_salarios_por_idade("nome.txt", 18))
+        idade = int(input("Qual idade quer pesquisar? "))
+        print(prog_arq_simples.relatorio_soma_salarios_por_idade("nome.txt", idade))
 
     else:
         print("finalizando...")
