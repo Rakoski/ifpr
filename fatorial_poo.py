@@ -1,7 +1,4 @@
 class Fatorial:
-    def __init__(self, numero):
-        self.numero = numero
-
     def fatorial(self, numero: int):
         if numero == 1:
             return 1
@@ -9,7 +6,7 @@ class Fatorial:
             return numero * self.fatorial(numero - 1)
 
 
-fatorial = Fatorial("uai")
+fatorial = Fatorial()
 classe = fatorial.fatorial(5)
 print(classe)
 
