@@ -14,4 +14,37 @@ def escrever_arquivo_pelo_dicionario(cam_arq, dictio):
     arquivo.close()
 
 
-escrever_arquivo_pelo_dicionario("nome.txt", beltrano)
+def acessar_arquivo(cam_arq):
+    arquivo = open(cam_arq, "r")
+    vet_linhas = arquivo.readlines()
+    vet = [""] * len(vet_linhas)
+    for i in range(0, len(vet)):
+        conteudo = vet_linhas[i].replace("\n", "")
+        dados = conteudo.split(";")
+        vet[i] = {}
+        vet[i]["nome"] = dados[0]
+        vet[i]["email"] = dados[1]
+        vet[i]["salario"] = dados[2]
+        vet[i]["data"] = dados[3]
+    arquivo.close()
+    return vet
+
+
+def procurar_pelo_nome(cam_arq, nome):
+    arquivo = open(cam_arq, "r")
+    vet_linhas = arquivo.readlines()
+    vet = [""] * len(vet_linhas)
+    for i in range(0, len(vet)):
+        conteudo = vet_linhas[i].replace("\n", "")
+        dados = conteudo.split(";")
+        vet[i] = {}
+        vet[i]["nome"] = dados[0]
+        vet[i]["email"] = dados[1]
+        vet[i]["salario"] = dados[2]
+        vet[i]["data"] = dados[3]
+        if nome in vet[i]["nome"]:
+            return vet[i]
+    arquivo.close()
+
+
+print(procurar_pelo_nome("nome.txt", "Ciclano"))
