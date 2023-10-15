@@ -31,6 +31,7 @@ def acessar_arquivo(cam_arq):
 
 
 def procurar_pelo_nome(cam_arq, nome):
+    pra_colocar = []
     arquivo = open(cam_arq, "r")
     vet_linhas = arquivo.readlines()
     vet = [""] * len(vet_linhas)
@@ -43,8 +44,9 @@ def procurar_pelo_nome(cam_arq, nome):
         vet[i]["salario"] = dados[2]
         vet[i]["data"] = dados[3]
         if nome in vet[i]["nome"]:
-            return vet[i]
+            pra_colocar.append(vet[i])
     arquivo.close()
+    return pra_colocar
 
 
-print(procurar_pelo_nome("nome.txt", "Ciclano"))
+print(procurar_pelo_nome("nome.txt", "Mateus"))
