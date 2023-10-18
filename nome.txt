@@ -3,4 +3,5 @@ Lucas;luquinha@gmail.com;5000;12/08/2005
 neymar jr;neymarjr@gmail.com;10000.0;12/03/2005
 lionel messi;leomessi@gmail.com;10000.0;12/06/2005;
 cristiano ronaldo;cr7@gmail.com;20000.0;09/12/2005;
-Beltrano;beltrano@ifpr.edu.br;1050.01;30/05/1995
+Beltrano;beltrano@ifpr.edu.br;1050.01;30/05/1995Beltrano;beltrano@ifpr.edu.br;30/05/1995;1050.01;
+Beltrano;beltrano@ifpr.edu.br;30/05/1995;1050.01;

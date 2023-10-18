@@ -49,4 +49,16 @@ def procurar_pelo_nome(cam_arq, nome):
     return pra_colocar
 
 
+def listar_emails(dicionario):
+    emails = []
+    arquivo = open("nome.txt", "r")
+    for i in range(len(dicionario)):
+        linhas = dicionario[i]
+        email_pra_colocar = linhas["email"]
+        emails.append(email_pra_colocar)
+    arquivo.close()
+    return emails
+
+
 print(procurar_pelo_nome("nome.txt", "Mateus"))
+print(listar_emails(acessar_arquivo("nome.txt")))
