@@ -55,3 +55,10 @@ def listar_emails(dicionario):
 
 print(procurar_pelo_nome("nome.txt", "Mateus"))
 print(listar_emails(acessar_arquivo("nome.txt")))
+
+def pra_ler(cam_arq):
+    arquivo = open(cam_arq, "r")
+    arquivo_lido = arquivo.readlines()
+    vet = [""] * len(arquivo_lido)
+    for i in range(0, len(vet)):
+        cont
