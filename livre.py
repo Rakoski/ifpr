@@ -9,7 +9,7 @@ def verdadeiro(x: int, y: int) -> bool:
     return False
 
 
-Entrada = [{ "nome": "Maria", "nota": 7 },{"nome": "Marta", "nota": 5 },{"nome": "Marcia", "nota": 5.5 }]
+Entrada = [{"nome": "Maria", "nota": 7}, {"nome": "Marta", "nota": 5}, {"nome": "Marcia", "nota": 5.5}]
 
 print(Entrada[0]["nota"])
 reversed()
