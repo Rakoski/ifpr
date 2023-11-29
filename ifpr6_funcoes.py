@@ -99,6 +99,6 @@ def listar_por_ano_nascimento(arq, ano_nasc):
             pra_guardar_as_pessoas[i] = dados[i]
         else:
             continue
-    return pra_guardar_as_pessoas.
+    return pra_guardar_as_pessoas
 
 
